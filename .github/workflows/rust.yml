@@ -1,4 +1,4 @@
-name: Rust
+name: Rust Tutorial
 
 on:
   push:
@@ -10,11 +10,13 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  deploy:
+    name: Build_test
     runs-on: ubuntu-latest
-
+    env:
+      working-directory: ./rust_tutorial/guessing_game
+  
     steps:
-    - uses: actions/checkout@v3
-    - name: Build-guessing_game
-      run: ./rust_tutorial/guessing_game/cargo build --verbose
+      - uses: actions/checkout@v3
+      - name: Build-guessing_game_test
+        run: cargo build --verbose
